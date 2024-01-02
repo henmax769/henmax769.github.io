@@ -38,7 +38,7 @@
     <script>
         window.applicationCache.ondownloading = function () {
             document.getElementById('progress').innerHTML =
-                'Page Caching Started!!';
+                'sedang download ceche,mohon menunggu!!';
         };
         window.applicationCache.onprogress = function (a) {
             document.getElementById('progress').innerHTML =
@@ -46,7 +46,7 @@
         };
         window.applicationCache.oncached = function (e) {
             document.getElementById('progress').innerHTML =
-                'Page Cached Successfully!!';
+                'download cache berhasil !!';
             setTimeout(function () {
                 document.getElementById('progress').innerHTML = 'Reopen the Page !!';
             }, 1500);
@@ -106,8 +106,8 @@
         }
 
         function goldhen() {
-            progress.innerHTML = 'Goldhen 2.3b2 loading... please wait';
-            LoadedMSG = 'GoldHEN 2.3b2 Loaded';
+            progress.innerHTML = 'sedang menjalankan goldhen mohon menunggu ';
+            LoadedMSG = 'GoldHEN berhasil dijalankan';
             PLfile = 'goldhen.bin';
             setTimeout(loadBIN, 50);
         }
@@ -117,13 +117,13 @@
 <body onload="if(localStorage.cachedG=='yes')setTimeout(poc,50);" style="background-color: #171717">
     <h1 style="
         text-shadow: 4px 4px 4px black;
-        font-size: 30px;
+        font-size: 80px;
         text-align: center;
         text-shadow: 4px 4px 4px black;
-        color: #C84B31;
+        color: #0728E3;
         margin: 5% 0 10% 0;
       ">
-        BUNDA GAMES hen Fw9.00
+        BUNDA GAMES / hen Fw9.00 
     </h1>
     <hr>
     <h1 id="progress" style="
@@ -132,7 +132,7 @@
         text-shadow: 4px 4px 4px black;
         color: #EDEDED;
       ">
-        Jailbreaking....Please wait
+        sedang menjalankan proses.mohon menunggu... 
     </h1>
     <hr>
 
@@ -908,7 +908,7 @@
                 }
                 chain.run();
                 alert(
-                    'Insert USB Drive and click OK after You See The Popup Notification, after jailbreak remove usb from PS4'
+                    'masukan flasdisk dan pilih OK setelah tampil notipikasi. lalu cabut flasdisk setelahnjailbreak berhasil'
                 );
                 {
                     for (var i = 1; i < NUM_KQUEUES; i += 2) {
@@ -988,11 +988,11 @@
                     chain.fcall(patch_buffer, p.read8(KERNEL_BASE_PTR));
                     chain.fcall(window.syscalls[73], patch_buffer, 0x4000);
                     chain.run();
-                    alert('Jailbreak done. Remove USB Drive from PS4');
+                    alert('jailbreak berhasil,silahkan cabut flasdisk');
                     setTimeout(jbdone, 50);
                 } else {
                     alert(
-                        'failed to trigger exploit kernel heap might be corrupted, try again or reboot the console'
+                        'jailbreak gagal,silahkan bembali atau restar PS4'
                     );
                     p.write8(0, 0);
                 }
