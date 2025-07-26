@@ -1,47 +1,37 @@
-<!-- Copyright (C) 2023-2025 anonymous
-
-This file is part of PSFree.
-
-PSFree is free software: you can redistribute it and/or modify
-it under the terms of the GNU Affero General Public License as
-published by the Free Software Foundation, either version 3 of the
-License, or (at your option) any later version.
-
-PSFree is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>.
--->
+<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset='utf-8'>
-        <title>PSFree-Lapse Exploit For PS4 9.00</title>
-        <style>
-            @font-face {
-                font-family: 'logging';
-                src: url('fonts/LiberationMono-Regular.ttf');
-            }
-            #console {
-                font-family: 'logging';
-            }
-        </style>
-        <script>
-        if (window.applicationCache.status=='0')
-        {
-          window.location.replace("cache.html");
-        }
-        </script>
-    </head>
-    <body>
-        PSFree: A PS4/PS5 Exploit Chain<br>
-        Donation (Monero/XMR):<br>
-        86Fk3X9AE94EGKidzRbvyiVgGNYD3qZnuKNq1ZbsomFWXHYm6TtAgz9GNGitPWadkS3Wr9uXoT29U1SfdMtJ7QNKQpW1CVS<br>
-        See <a href='./about.html' data-jslicense='1'>JavaScript license information</a> for the
-        source code and license.<br>
-        <pre id='console'></pre>
-    </body>
-    <script type='module' src='./alert.mjs'></script>
+<head>
+<meta charset="utf-8">
+<title>Fullscreen-out-bug</title>
+<style>
+  body { background:#000; color:#0f0; font-family:monospace; padding:1em; }
+  h1  { color:#0ff; }
+</style>
+</head>
+<body>
+<h1>Fullscreen-out-bug</h1>
+<pre id="log"></pre>
+<script>
+const log = (...m)=>document.getElementById("log").textContent+=m.join(" ")+"\n";
+const hex = v=>"0x"+v.toString(16).padStart(8,"0");
+
+//------------- CONFIG -------------
+const PATTERN   = 0x43434343;   // patrón de spray
+const SPRAY_CNT = 60000;        // nº de buffers rociados
+const SPRAY_LEN = 16;           // uint32 por buffer
+//----------------------------------
+
+/* 1. Heap‑spray con backing stores contiguos */
+const spray=[];
+log("[*] Sprayeando "+SPRAY_CNT+" ArrayBuffers…");
+for(let i=0;i<SPRAY_CNT;i++){
+  const buf = new ArrayBuffer(SPRAY_LEN*4);
+  const u32  = new Uint32Array(buf);
+  for(let j=0;j<u32.length;j++) u32[j]=PATTERN;   // 0x43434343
+  spray.push({u32, f64:new Float64Array(buf)});
+}
+log("[+] Spray completado.");
+
+</script>
+</body>
 </html>
