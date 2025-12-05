@@ -18,18 +18,18 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
 // WebKit offsets start
 
 // offsets for JSC::JSObject
-export const js_cell = 0;
-export const js_butterfly = 0x8;
+export const js_cell = 0xb0;
+export const js_butterfly = 0x48;
 // start of the array of inline properties (JSValues)
-export const js_inline_prop = 0x10;
+export const js_inline_prop = 0x200;
 
 // sizeof JSC::JSObject
 export const size_jsobj = js_inline_prop;
 
 // offsets for JSC::JSArrayBufferView
-export const view_m_vector = 0x10;
-export const view_m_length = 0x18;
-export const view_m_mode = 0x1c;
+export const view_m_vector = 0x448;
+export const view_m_length = 0x470;
+export const view_m_mode = 0x1c8;
 
 // sizeof JSC::JSArrayBufferView
 export const size_view = 0x20;
@@ -46,10 +46,10 @@ export const size_strimpl = 0x18;
 
 // offset to m_wrapped, pointer to a DOM object
 // for this class, it's a WebCore::HTMLTextAreaElement pointer
-export const jsta_impl = 0x18;
+export const jsta_impl = 0x28;
 
 // sizeof WebCore::JSHTMLTextAreaElement
-export const size_jsta = 0x20;
+export const size_jsta = 0x18;
 
 // WebKit offsets end
 
@@ -59,4 +59,4 @@ export const GB = KB * KB * KB;
 export const page_size = 16 * KB; // page size on the ps4
 
 // size of the buffer used by setcontext/getcontext (see module/chain.mjs)
-export const context_size = 0xc8;
+export const context_size = 0xb0;
